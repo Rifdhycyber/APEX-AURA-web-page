@@ -1,2 +1,3 @@
 # APEX-AURA-web-page
 This repository contains the step-by-step development of a website named Apex Aura. The purpose of this project is to build a fully functional web page from scratch and document each stage of its creation. All stages—from initial layout design to final deployment—will be uploaded and maintained here for reference and collaboration.
+As I am currently learning and practicing web development, this project helps me improve my skills in HTML, CSS, and related technologies. Every update here reflects my progress and hands-on learning, making it a valuable part of my web development journey.
