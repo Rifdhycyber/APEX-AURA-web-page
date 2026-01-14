@@ -1,0 +1,103 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+h1{
+    font-variant: anton;
+}
+
+header img{
+    height: 100%;
+    width: 75%;
+    border-radius: 35%;
+    transition: 600ms;
+    justify-content: space-between;
+}
+header {
+  background-color: green;
+  height: 150px;
+  display: flex;                  /* Flexbox enabled */
+  align-items: center;            /* Vertically center items */
+  justify-content: space-between; /* Spread items: left, center, right */
+  padding: 0 20px;
+}
+
+/* #comlogo, #mylogo {
+  height: 120px;
+  width: 120px;
+  border-radius: 10%;
+  background-color: #fff;
+  border: 2px solid rgb(7, 102, 15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 1s;
+} */
+
+
+#comlogopic, #mylogopic {
+  width: 100px;
+  height: 100px;
+  border-radius: 10%;
+  transition: 1s;
+}
+
+#welcome {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  flex-grow: 1;                   /* Take up middle space */
+}*/
+
+ 
+
+#sub-head{
+    background-color: rgb(7, 102, 15);
+    display: flex;
+    justify-content: space-around; /* or space-between */
+    padding: 10px 10px;
+    flex-wrap: wrap;
+    flex-grow: 25%;
+
+}
+
+h5 {
+    background-color: rgb(15, 179, 15);
+    color: white;
+    padding: 8px 16px;
+    margin: 1px;
+    border: 2px solid black ;
+    text-align: center;
+    cursor: pointer;
+    transition: all 500ms ease-in-out;
+    
+}
+
+h5:hover{
+    color: greenyellow;
+    background-color: rgb(10, 17, 10);
+    transform: scale(1);
+    cursor: pointer;
+    
+}
+img:hover{
+    transform: scale(1.09);
+}
+
+#comlogo:hover,#mylogo:hover{
+    width: 137px;
+    height: 137px;
+    transform: scale(1.09);
+}
+
+#gmp{
+    border: 10px solid black;
+}
+#gmp img{
+    height: 500px;
+    width: 500px;
+    float: left;
+}
+p{
+    text-indent: 40px;
+}
