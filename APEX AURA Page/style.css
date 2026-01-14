@@ -90,14 +90,10 @@ img:hover{
     transform: scale(1.09);
 }
 
-#gmp{
-    border: 10px solid black;
-}
-#gmp img{
-    height: 500px;
-    width: 500px;
-    float: left;
-}
-p{
-    text-indent: 40px;
+#certificates{
+    display: grid;
+    background-color: slateblue;
+    grid-template-columns: repeat(7,1fr) ;
+    row-gap: 10px;
+    
 }
