@@ -2,14 +2,16 @@
     margin: 0%;
     padding: 0%;
 }
+h1{
+    font-variant: anton;
+}
 
 header img{
     height: 100%;
     width: 75%;
-    margin-top: 10%;
-    margin-left: 10%;
     border-radius: 35%;
     transition: 600ms;
+    justify-content: space-between;
 }
 header {
   background-color: green;
@@ -20,7 +22,7 @@ header {
   padding: 0 20px;
 }
 
-#comlogo, #mylogo {
+/* #comlogo, #mylogo {
   height: 120px;
   width: 120px;
   border-radius: 10%;
@@ -30,7 +32,7 @@ header {
   align-items: center;
   justify-content: center;
   transition: 1s;
-}
+} */
 
 
 #comlogopic, #mylogopic {
@@ -86,4 +88,16 @@ img:hover{
     width: 137px;
     height: 137px;
     transform: scale(1.09);
+}
+
+#gmp{
+    border: 10px solid black;
+}
+#gmp img{
+    height: 500px;
+    width: 500px;
+    float: left;
+}
+p{
+    text-indent: 40px;
 }
