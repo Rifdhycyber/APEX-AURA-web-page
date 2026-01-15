@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .certificates {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.certificates h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.certificates h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.certificates p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* 📱 Mobile responsiveness */
+/*@media (max-width: 480px) {
+    .certificates {
+        padding: 15px;
+    }
+
+    .certificates h3 {
+        font-size: 1.3rem;
+    }
+
+    .certificates h4 {
+        font-size: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px;
+    }
+} */
+.certificates {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.certificates h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.certificates h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* Normal text */
+.certificates {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Button styling (input button) */
+.certificates input[type="button"] {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.certificates input[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 480px) {
+    .certificates {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .certificates h3 {
+        font-size: 1.3rem;
+    }
+
+    .certificates h4 {
+        font-size: 1rem;
+    }
+
+    .certificates input[type="button"] {
+        width: 100%;
+        padding: 14px;
+    }
+}
+.my-box {
+  border: 5px solid; /* border thickness */
+  border-image: linear-gradient(to right, green, white) 1;
+}
+    </style>
+</head>
+<body>
+    <div id="fda" class="certificates">
+    <h3>FDA Certificate</h3>
+    <h4>Why We Display the FDA Certificate</h4>
+
+    <p>Click below to learn more about our FDA certification.</p>
+
+    <a href="./fda/fda.html" class="btn">Click Here</a>
+</div>
+
+
+<div id="fda" class="certificates">
+    <h3><b>FDA Certificate</b></h3>
+    <h4>Why We Display the FDA Certificate</h4>
+
+    to know about that<br> 
+    <a href="./fda/fda.html">
+        <input type="button" value="click here">
+    </a>
+</div>
+<div class="my-box">
+    hello
+</div>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Google+Sans+Flex:opsz,wght,GRAD@6..144,1..1000,15&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: black;
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: #fff;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid black;
+      margin-right: 20px;
+      flex: 1 1 300px;
+    }
+
+    .content {
+      flex: 2 1 400px;
+      min-width: 250px;
+    }
+
+    h1 {
+      font-family: 'Anton', sans-serif;
+      margin-bottom: 15px;
+      color: #ffcc00;
+    }
+
+    .para {
+      line-height: 1.6;
+    }
+
+    ol {
+      margin-left: 20px;
+      text-align: left;
+    }
+
+    a {
+      color: red;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      img {
+        margin: 0 0 20px 0;
+      }
+
+      .para {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="./haccp/haccp.jpeg" alt="HACCP Certificate">
+    <div class="content">
+      <h1>Why We Display the HACCP Certificate</h1>
+      <div class="para">
+        <p>We proudly showcase the HACCP (Hazard Analysis and Critical Control Points) certificate provided to our product supplier.</p>
+        <p>This certification proves that the products we sell are sourced from a company that strictly follows international food safety and hygiene standards. The HACCP system ensures that every step in the production process — from raw material handling to packaging — is closely monitored to prevent contamination, maintain cleanliness, and deliver safe, high-quality products to customers.</p>
+        <p>By displaying this certificate, we want our customers to know that:</p>
+        <ol>
+          <li>We prioritize health and safety</li>
+          <li>Our products come from trusted and certified sources</li>
+          <li>You can shop with confidence and peace of mind</li>
+        </ol>
+        <p>This certificate is not just a document — it is a reflection of our commitment to quality and care.</p>
+        <a href="../index.html">Back to HOME</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

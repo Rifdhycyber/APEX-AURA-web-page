@@ -91,9 +91,85 @@ img:hover{
 }
 
 #certificates{
+    display: flex;            /* make it a flex container */
+    flex-direction: column;   /* stack content vertically */
+    justify-content: space-between; /* pushes button to bottom */
+    height: 30vh;             /* responsive height */
+    min-height: 600px;        /* prevents too short cards */
+    padding: 20px;
+    box-sizing: border-box;   /* includes padding in height */
+
     display: grid;
-    background-color: slateblue;
-    grid-template-columns: repeat(7,1fr) ;
-    row-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 15px;
+    border: none;
+    background-color: white;
+    
+
     
 }
+input{
+    color: brown;
+    background-color: aqua;
+    border: solid 3px;
+    border-radius: 30px;
+    padding: 5%;
+    font-size: .98rem;
+}
+
+.certificates{
+    max-width: 600px;
+    background-color: rgb(20, 192, 71);
+    border: 5px solid black;
+    border-radius: 20px;
+    border-block-start-width: 4cap ;
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    border-image: linear-gradient(to right, black, white) 1;
+    
+    
+}
+#fda{
+    grid-column: 2 / 3;
+}
+
+.certificates a{
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.1rem;
+
+}
+h4{
+    font-size: 1.0rem;
+}
+p{
+    color: rgb(59, 10, 173);
+    font-size: .8rem;
+}
+@media screen and (max-width:650px) {
+    .certificates{
+            height: 150px;
+    }
+}
+@media screen and (max-width:553px) {
+    .certificates{
+            height: 165px;
+    }
+}
+@media screen and (max-width:505px) {
+    .certificates{
+            height: 220px;
+    }
+}
+
+
+ 
