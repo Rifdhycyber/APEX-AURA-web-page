@@ -3,41 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Google+Sans+Flex:opsz,wght,GRAD@6..144,1..1000,15&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>ISO 22000 Certificate</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
     <style>
-        img{
-            width: 500px;
-            height: 600px;
-            float: left;
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        body{
-            background-color: black;
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            /* Green Theme Background */
+            background: linear-gradient(135deg, #0a2e05, #10620b, #228B22);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #ffffff;
+            overflow-x: hidden;
         }
-        a{
-            color: white;
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Certificate Images Container */
+        .cert-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column; /* Stacks images vertically */
+            align-items: center;
+            gap: 20px; /* Space between two images */
+            position: relative;
+        }
+
+        .cert-img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 15px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        /* Hover Effect */
+        .cert-img:hover {
+            transform: scale(1.02);
+            border-color: #ffffff;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Text Content */
+        .content-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #ffffff, #d4ff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Added styling for the new H2 tag */
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #f0fff0;
+            margin-bottom: 20px;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Added styling for the list */
+        ul {
+            list-style: none; /* Remove default bullets */
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #f0fff0;
+        }
+
+        /* Custom bullet point */
+        li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #d4ff00; /* Bright yellow-green accent */
+            font-size: 1rem;
+        }
+
+        li strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .back-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: #ffffff;
+            z-index: -1;
+            transition: width 0.3s ease;
+        }
+
+        .back-btn:hover::before {
+            width: 100%;
+        }
+
+        .back-btn:hover {
+            color: #10620b;
+            box-shadow: 0 0 20px rgba(255,255,255,0.6);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .glass-card {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .cert-container {
+            opacity: 0;
+            animation: fadeInLeft 1.2s ease-out 0.3s forwards;
+        }
+
+        .content-container {
+            opacity: 0;
+            animation: fadeInRight 1.2s ease-out 0.5s forwards;
+        }
+
+        /* RESPONSIVE CSS */
+        @media (max-width: 900px) {
+            .glass-card {
+                flex-direction: column; /* Stack image and text */
+                padding: 30px;
+                text-align: left; /* Keeps text readable */
+            }
+
+            h1 {
+                font-size: 2.2rem;
+                text-align: center; /* Center title on mobile */
+            }
+
+            .badge {
+                display: block; /* Center badge */
+                margin: 0 auto 15px auto;
+                text-align: center;
+            }
+
+            /* Adjust animations for vertical stack */
+            .cert-container {
+                width: 100%;
+                animation: fadeInUp 1s ease-out 0.3s forwards;
+            }
+
+            .content-container {
+                width: 100%;
+                animation: fadeInUp 1s ease-out 0.5s forwards;
+            }
+            
+            .back-btn {
+                display: block; /* Make button full width or centered block */
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="../index.html">back to HOME</a>
-    <img src="./iso22000.jpeg"></a>
-    <img src="./iso22000-2.jpeg"></a>
-   <h1> Why We Display the HACCP Certificate </h1>
 
-We proudly showcase the HACCP (Hazard Analysis and Critical Control Points) certificate provided to our product supplier. This certification proves that the products we sell are sourced from a company that strictly follows international food safety and hygiene standards.
+    <div class="glass-card">
+        
+        <!-- Certificate Image Section -->
+        <div class="cert-container">
+            <!-- Image 1 -->
+            <img src="./iso22000.jpeg" alt="ISO 22000 Certificate Page 1" class="cert-img">
+            <!-- Image 2 -->
+            <img src="./iso22000-2.jpeg" alt="ISO 22000 Certificate Page 2" class="cert-img">
+        </div>
 
-The HACCP system ensures that every step in the production process — from raw material handling to packaging — is closely monitored to prevent contamination, maintain cleanliness, and deliver safe, high-quality products to customers.
+        <!-- Text Content Section -->
+        <div class="content-container">
+            <span class="badge">Quality Assurance</span>
+            <h1>Why We Display the ISO 22000 Certificate</h1>
+            
+            <h2>What ISO 22000 Certification Means for You</h2>
+            
+            <p>Our ISO 22000 Food Safety Management System certification is not just a logo – it is proof of how seriously we take food safety. This international standard sets strict requirements for identifying and managing food safety hazards and ensuring safe, consistent products.</p>
+            
+            <ul>
+                <li><strong>Certified safety:</strong> We follow a globally accepted system designed to keep food products safe at every step.</li>
+                <li><strong>Risk control:</strong> We actively identify and control potential food safety hazards instead of just reacting to problems.</li>
+                <li><strong>Independent verification:</strong> Our system is checked by an independent certification body, giving you unbiased proof of our commitment.</li>
+                <li><strong>Legal and customer compliance:</strong> We meet both legal requirements and the expectations of demanding customers and international buyers.</li>
+            </ul>
 
-By displaying this certificate, we want our customers to know that:
-- We prioritize health and safety
-- Our products come from trusted and certified sources
-- You can shop with confidence and peace of mind
+            <p>This certificate is our promise to you: every product we sell is developed, handled, and delivered with your safety in mind.</p>
+            
+            <br>
 
-This certificate is not just a document — it is a reflection of our commitment to quality and care
+            <p>This certificate is not just a document — it is a reflection of our commitment to quality and care.</p>
+
+            <a href="../index.html" class="back-btn">← Back to Home</a>
+        </div>
+
+    </div>
 
 </body>
-
 </html>

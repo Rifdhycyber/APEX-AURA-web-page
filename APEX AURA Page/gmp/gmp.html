@@ -3,37 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Google+Sans+Flex:opsz,wght,GRAD@6..144,1..1000,15&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>GMP Certificate</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
     <style>
-        img{
-            width: 500px;
-            height: 600px;
-            float: left;
+        /* பேஸிக் ரிசெட் (Reset) */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        body{
-            background-color: black;
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            /* கிரீன் தீம் பேக்க்கிரௌண்ட் (அடர் பச்சையிலிருந்து லைட் பச்சைக்கு) */
+            background: linear-gradient(135deg, #0a2e05, #10620b, #228B22);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #ffffff;
+            overflow-x: hidden;
         }
-        a{
-            color: white;
+
+        /* க்ளாஸ்மோர்பிசம் கார்ட் (Glassmorphism Card) */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1); /* பின்னணி பச்சை, கார்டு சற்றே வெள்ளை ஒளிவிடறது */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* சர்டிஃபிகேட் படம் (Certificate Image) */
+        .cert-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .cert-img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 15px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        /* படத்தின் மீது ஹோவர் (Hover Effect) */
+        .cert-img:hover {
+            transform: scale(1.05) rotate(1deg);
+            border-color: #ffffff; /* ஹோவர் செய்யும்போது பார்டர் வெள்ளையாக மாறும் */
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); /* பிரகாசமான வெள்ளை ஒளி */
+        }
+
+        /* எழுத்து உள்ளடக்கம் (Text Content) */
+        .content-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2); /* வெள்ளை வெளிப்பாடு */
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            /* வெள்ளை முதல் மஞ்சள் பச்சை வண்ணத்திற்கு */
+            background: linear-gradient(to right, #ffffff, #d4ff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #f0fff0; /* மிக இளம் பச்சை (Honeydew) */
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* வாசிப்பதற்கு எளிதாக கருப்பு நிழல் */
+        }
+
+        /* Back பட்டன் (Stylized) */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .back-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: #ffffff;
+            z-index: -1;
+            transition: width 0.3s ease;
+        }
+
+        .back-btn:hover::before {
+            width: 100%;
+        }
+
+        .back-btn:hover {
+            color: #10620b; /* ஹோவர் செய்யும்போது எழுத்து இருண்ட பச்சையாகும் */
+            box-shadow: 0 0 20px rgba(255,255,255,0.6);
+        }
+
+        /* --- ANIMATIONS (Same as before) --- */
+
+        /* Fade In Up */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Fade In Left */
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Fade In Right */
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Applying Animations */
+        .glass-card {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .cert-container {
+            opacity: 0;
+            animation: fadeInLeft 1.2s ease-out 0.3s forwards;
+        }
+
+        .content-container {
+            opacity: 0;
+            animation: fadeInRight 1.2s ease-out 0.5s forwards;
+        }
+
+        /* Responsive for Mobile */
+        @media (max-width: 900px) {
+            .glass-card {
+                flex-direction: column;
+                padding: 30px;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .badge {
+                margin: 0 auto 15px auto;
+            }
+
+            .cert-container {
+                animation: fadeInUp 1s ease-out 0.3s forwards;
+            }
+
+            .content-container {
+                animation: fadeInUp 1s ease-out 0.5s forwards;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="../index.html">back to HOME</a>
-    <img src="./GMP Photo.jpeg"></a>
-   <h1> GMP Certification – Apex Aura
-Apex Aura products are manufactured in GMP‑certified facilities.
-GMP (Good Manufacturing Practices) is an internationally recognized system that ensures products are consistently produced and controlled according to strict quality standards.
-This certification is not just a badge—it’s proof that Apex Aura prioritizes:
-- Safety: Every product is made in clean, controlled environments to prevent contamination.
-- Quality: Each batch follows validated processes for consistency and reliability.
-- Trust: Independent audits confirm compliance with global regulations.
-- Transparency: Detailed records guarantee full traceability from raw materials to finished goods.
-By displaying this certificate, Apex Aura demonstrates that our products meet the highest standards of manufacturing excellence. It reassures customers that what they purchase is safe, pure, and crafted with care.
+
+    <div class="glass-card">
+        
+        <!-- Certificate Image Section -->
+        <div class="cert-container">
+            <img src="./GMP Photo.jpeg" alt="GMP Certificate" class="cert-img">
+        </div>
+
+        <!-- Text Content Section -->
+        <div class="content-container">
+            <span class="badge">Quality Assurance</span>
+            <h1>Why We Display the GMP Certificate</h1>
+            
+            <p>
+                Our company is proud to hold the GMP (Good Manufacturing Practice) certificate, 
+                which stands as a testament to the high quality and safety of our products. 
+                This certification is awarded only to manufacturers who strictly adhere to 
+                world-class production standards and rigorous hygiene regulations.
+                Since our products are applied directly to your body, this certificate verifies 
+                that we maintain a clean, high-quality, and safe manufacturing environment. 
+                It ensures that every product you buy from us is made with care, guaranteeing 
+                your safety and satisfaction.
+            </p>
+
+            <a href="../index.html" class="back-btn">← Back to Home</a>
+        </div>
+
+    </div>
 
 </body>
-
 </html>
