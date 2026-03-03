@@ -167,6 +167,209 @@
 
 
 
+
+  #int-body {
+      background: #0e4d09;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+
+      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, #080202, #d4ff00);
+            -webkit-background-clip: border-box;
+    }
+
+     /* main index container – mimics your existing page style */
+    .index-wrapper {
+      max-width: 1100px;
+      width: 100%;
+      background: #fcfaf7;
+      border-radius: 3rem 3rem 2rem 2rem;
+      box-shadow: 0 20px 40px -15px rgba(60, 45, 30, 0.2);
+      padding: 2.2rem 2.5rem;
+    }
+
+    /* decorative header */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-area i {
+      font-size: 2.5rem;
+      color: #4d6b3f;
+    }
+
+    .logo-area span {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #3a3a2e;
+    }
+
+    .logo-area strong {
+      font-weight: 600;
+      color: #6f4e2e;
+      background: #efe3d5;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 1.2rem;
+    }
+
+    /* ===== THE NEW LINK SECTION – READY FOR INDEX.HTML ===== */
+    .company-highlight-card {
+      background: linear-gradient(115deg, #f3f0ea 0%, #fefcf8 100%);
+      border-radius: 2.5rem;
+      padding: 2rem 2.2rem;
+      margin: 2.5rem 0 1.5rem 0;
+      border: 1px solid #dccfbc;
+      box-shadow: 0 12px 22px -10px rgba(70, 50, 30, 0.15);
+      transition: all 0.35s ease;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.8rem;
+      cursor: pointer;
+    }
+
+    .company-highlight-card:hover {
+      border-color: #b2946b;
+      box-shadow: 0 22px 30px -12px #7f673e60;
+      transform: scale(1.005) translateY(-2px);
+      background: #fffdf9;
+    }
+
+    .highlight-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .highlight-text h3 {
+      font-size: 2rem;
+      font-weight: 400;
+      color: #2f402b;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .highlight-text h3 i {
+      color: #917b56;
+      font-size: 2rem;
+      transition: transform 0.25s;
+    }
+
+    .company-highlight-card:hover .highlight-text h3 i {
+      transform: rotate(6deg) scale(1.05);
+    }
+
+    .highlight-text p {
+      font-size: 1.18rem;
+      color: #463f35;
+      max-width: 550px;
+      line-height: 1.5;
+      border-left: 3px solid #bcaa8f;
+      padding-left: 1.2rem;
+      background: #f7f2ea60;
+      border-radius: 0 0.8rem 0.8rem 0;
+    }
+
+    .preview-badge {
+      background: #e6d7c2;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      color: #3f4f31;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      width: fit-content;
+      border: 1px solid #cab99c;
+    }
+
+    .arrow-link {
+      background: #ffffffd9;
+      backdrop-filter: blur(4px);
+      padding: 0.9rem 2rem 0.9rem 1.8rem;
+      border-radius: 60px;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #2d3f24;
+      text-decoration: none;
+      border: 1px solid #b9a683;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+    }
+
+    .arrow-link i {
+      transition: transform 0.2s;
+    }
+
+    .arrow-link:hover {
+      background: #ffffff;
+      border-color: #7a9f5f;
+      gap: 1.2rem;
+      padding-right: 2.3rem;
+      box-shadow: 0 12px 18px -10px #4b6d3b50;
+    }
+
+    .arrow-link:hover i {
+      transform: translateX(5px);
+    }
+
+    /* dummy content to blend with index page */
+    .dummy-content {
+      margin: 3rem 0 1.5rem;
+    }
+
+    .dummy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .dummy-item {
+      background: #f1ebe3;
+      border-radius: 2rem;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      color: #4f4a3e;
+      transition: 0.15s;
+      border: 1px solid #e4d6c4;
+    }
+
+    hr {
+      border: 1px dashed #cbb99f;
+      margin: 2rem 0 1rem;
+    }
+
+    /* small responsive */
+    @media (max-width: 700px) {
+      .company-highlight-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+
+
 /* --- Main Heading Container --- */
 .main-heading-container {
     /* Green Gradient Background (Added here so white text is visible on your page) */
@@ -358,6 +561,79 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
 
+
+        #products h1{
+            color: wheat;
+            background-color: #3a3a2e;
+            line-height: 90px;
+        }
+
+#products{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: inline;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-wrap: wrap;
+            
+        }
+
+        .product-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 20%;
+            margin: 2rem;
+        }
+
+        #products h3{
+            color: #000000;
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .view-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .view-btn:hover {
+            background-color: #45a049;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         /* Link Reset */
         .certificates a {
             text-decoration: none;
@@ -400,3 +676,7 @@
                 padding: 25px 15px;
             }
         }
+
+
+        
+        

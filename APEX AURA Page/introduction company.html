@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apexaura · company profile</title>
+  <!-- Font Awesome 6 (free) for icons, optional but adds visual touch -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f8f5f0 0%, #f0ebe3 100%);
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+      margin: 0;
+    }
+
+    /* main card – soft, elevated, smooth transitions everywhere */
+    .company-card {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      background: #ffffff;
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 45px -12px rgba(80, 60, 30, 0.25),
+                  0 2px 8px rgba(0,0,0,0.03);
+      padding: 2.5rem 2.8rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(160, 140, 110, 0.15);
+    }
+
+    .company-card:hover {
+      box-shadow: 0 30px 55px -10px rgba(60, 45, 20, 0.3);
+      transform: scale(1.003);
+    }
+
+    /* decorative botanical line */
+    .title-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 2px dashed #b7a78a;
+      padding-bottom: 1.2rem;
+    }
+
+    .title-section i {
+      font-size: 2.5rem;
+      color: #3f6a4a;
+      opacity: 0.8;
+      transition: transform 0.25s ease;
+    }
+
+    .title-section:hover i {
+      transform: rotate(4deg) scale(1.05);
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: #2b3e2b;
+      position: relative;
+    }
+
+    h2 span {
+      font-weight: 600;
+      color: #6f4e2e;
+      border-bottom: 3px solid #b99470;
+      padding-bottom: 0.1rem;
+    }
+
+    /* company overview block — smooth fade in */
+    .overview-block {
+      background: #f9f7f2;
+      border-radius: 2rem;
+      padding: 2rem 2rem 1.5rem 2rem;
+      margin-bottom: 2.2rem;
+      border: 1px solid #e1d5c4;
+      transition: background 0.2s ease, box-shadow 0.3s;
+    }
+
+    .overview-block:hover {
+      background: #fefcf8;
+      box-shadow: 0 8px 18px -8px rgba(90, 70, 40, 0.12);
+    }
+
+    .overview-block h3 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #3f4e2c;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .overview-block h3 i {
+      font-size: 1.8rem;
+      color: #8f6b3c;
+    }
+
+    .overview-ul {
+      list-style: none;
+    }
+
+    .overview-ul li {
+      font-size: 1.16rem;
+      padding: 0.7rem 0 0.7rem 1.8rem;
+      border-bottom: 1px solid #e9dfd1;
+      position: relative;
+      transition: padding 0.2s, background 0.2s;
+      color: #2e2a24;
+    }
+
+    .overview-ul li:last-child {
+      border-bottom: none;
+    }
+
+    .overview-ul li::before {
+      content: "🌿";
+      position: absolute;
+      left: -0.1rem;
+      top: 0.7rem;
+      font-size: 1rem;
+      opacity: 0.8;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .overview-ul li:hover::before {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .overview-ul li b {
+      color: #5f4a2e;
+      font-weight: 600;
+      background: #fff2e0;
+      padding: 0.1rem 0.4rem;
+      border-radius: 0.4rem;
+      transition: background 0.2s;
+    }
+
+    .overview-ul li:hover b {
+      background: #f0dbc0;
+    }
+
+    /* key details — grid style with transition on cards */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
+      margin-top: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .detail-item {
+      background: #f3efe8;
+      border-radius: 1.8rem;
+      padding: 1.4rem 1.2rem;
+      border: 1px solid #dacdb9;
+      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+
+    .detail-item:hover {
+      background: #fefaf3;
+      border-color: #b7a071;
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 20px 25px -10px rgba(70, 50, 20, 0.15);
+    }
+
+    .detail-item i {
+      color: #557a4e;
+      font-size: 1.5rem;
+      width: 2rem;
+      margin-right: 0.5rem;
+      transition: transform 0.2s;
+    }
+
+    .detail-item:hover i {
+      transform: scale(1.1);
+    }
+
+    .detail-item strong {
+      font-weight: 600;
+      color: #3b4d2e;
+      font-size: 1.1rem;
+      display: inline-block;
+      margin-bottom: 0.2rem;
+    }
+
+    .detail-item p {
+      margin-top: 0.4rem;
+      color: #3f382e;
+      line-height: 1.4;
+      font-size: 1rem;
+      padding-left: 0.2rem;
+    }
+
+    /* leadership / operations list inside details */
+    .sub-list {
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+      list-style: none;
+    }
+
+    .sub-list li {
+      font-size: 0.98rem;
+      margin: 0.3rem 0;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .sub-list li i {
+      font-size: 0.7rem;
+      color: #886e48;
+    }
+
+    /* back link — smooth transition, elegant */
+    .back-link-container {
+      margin-top: 2.8rem;
+      text-align: right;
+      border-top: 1px dashed #cfc1ae;
+      padding-top: 1.5rem;
+    }
+
+    .back-link {
+      background: #ffffffd6;
+      backdrop-filter: blur(4px);
+      padding: 0.7rem 2rem 0.7rem 1.8rem;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      color: #3c4f2d;
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid #cbb89b;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    .back-link i {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+
+    .back-link:hover {
+      background: #ffffff;
+      border-color: #7f9a6b;
+      box-shadow: 0 8px 18px -8px #7f6e4e40;
+      padding-right: 2.2rem;
+      gap: 1rem;
+    }
+
+    .back-link:hover i {
+      transform: translateX(-3px);
+    }
+
+    /* extra microtransitions */
+    li, p, h3, .detail-item {
+      transition: color 0.2s, background 0.2s, border-color 0.2s;
+    }
+
+    /* responsive touch */
+    @media (max-width: 600px) {
+      .company-card {
+        padding: 1.8rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      .title-section i {
+        font-size: 2rem;
+      }
+    }
+
+    /* small fade-in animation on load */
+    .company-card {
+      animation: fadeSlideUp 0.6s ease-out;
+    }
+
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="company-card">
+  <!-- title / link to index (conceptual) -->
+  <div class="title-section">
+    <i class="fas fa-leaf"></i>
+    <h2><span>Apexaura</span> Int (Pvt) Ltd</h2>
+  </div>
+
+  <!-- ORIGINAL COMPANY INTRODUCTION content, enhanced with smooth transitions -->
+  <div class="overview-block">
+    <h3><i class="fas fa-seedling"></i> Company introduction</h3>
+    <!-- directly from int-com, but structured -->
+    <p style="font-size: 1.16rem; line-height: 1.5; margin-bottom: 1.5rem; color: #3d3529; padding: 0 0.3rem;">
+      Apexaura (Apexaura Int (Pvt) Ltd) is a Sri Lankan company established in 2014, focused on promoting Sri Lankan herbal food supplements, beauty products, and traditional wellness, emphasizing organic, high‑quality natural ingredients like Moringa, Nutgrass, and Garcinia, with certifications (ISO, GMP) and international reach. Led by Mr. Sheekshana Gunawardhana, they operate from Malabe, Sri Lanka, and aim to provide holistic health through their products and a unique business model for entrepreneurs.
+    </p>
+  </div>
+
+  <!-- COMPANY OVERVIEW (detailed list) -->
+  <div style="margin-bottom: 2rem;">
+    <h3 style="font-size: 1.6rem; font-weight: 500; color: #3f4e2c; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+      <i class="fas fa-tree" style="color: #6f8c5d;"></i> Company overview
+    </h3>
+    <!-- exact UL from the prompt with icons replaced by smooth bullet via css -->
+    <ul class="overview-ul">
+      <li><b>Name:</b> Apexaura Int (Pvt) Ltd.</li>
+      <li><b>Founded:</b> July 23, 2014.</li>
+      <li><b>Focus:</b> Herbal food supplements, organic beauty products, and promoting Sri Lankan nature-based wellness.</li>
+      <li><b>Mission:</b> To help people live a healthy, balanced life using high-quality, certified herbal products, advocating "prevention is better than cure".</li>
+    </ul>
+  </div>
+
+  <!-- KEY DETAILS section with grid and transitions (original <ol> content converted to grid) -->
+  <h3 style="font-size: 1.6rem; font-weight: 500; color: #3f4e2c; display: flex; align-items: center; gap: 0.5rem; margin: 1.8rem 0 0.8rem 0;">
+    <i class="fas fa-gem"></i> Key details
+  </h3>
+
+  <div class="details-grid">
+    <!-- item 1: headquarters -->
+    <div class="detail-item">
+      <i class="fas fa-map-pin"></i> <strong>Headquarters</strong>
+      <p>823/E, Kaduwela Road, Malabe, Sri Lanka.</p>
+    </div>
+    <!-- item 2: leadership -->
+    <div class="detail-item">
+      <i class="fas fa-users"></i> <strong>Leadership</strong>
+      <ul class="sub-list">
+        <li><i class="fas fa-circle"></i> Mr. Sheekshana Gunawardhana (Head)</li>
+        <li><i class="fas fa-circle"></i> Maduwanthi Ekanayaka</li>
+        <li><i class="fas fa-circle"></i> Devan Muthuhetti</li>
+      </ul>
+    </div>
+    <!-- item 3: products -->
+    <div class="detail-item">
+      <i class="fas fa-capsules"></i> <strong>Products</strong>
+      <p>Dietary supplements from Moringa, Nutgrass, Garcinia; backed by testimonials & certifications.</p>
+    </div>
+    <!-- item 4: certifications -->
+    <div class="detail-item">
+      <i class="fas fa-certificate"></i> <strong>Certifications</strong>
+      <p>ISO 9001:2008, ISO 22000:2005, HACCP, GMP, approved by Sri Lankan Dept. of Ayurveda.</p>
+    </div>
+    <!-- item 5: operations & herbal garden -->
+    <div class="detail-item">
+      <i class="fas fa-seedling"></i> <strong>Operations</strong>
+      <p>28‑acre herbal garden (Kurunegala) + Sri Lanka’s largest private tissue culture lab.</p>
+    </div>
+    <!-- item 6: business model -->
+    <div class="detail-item">
+      <i class="fas fa-hand-holding-heart"></i> <strong>Business Model</strong>
+      <p>Entrepreneur Common Resource Sharing System (ECRSS) for wealth & health.</p>
+    </div>
+  </div>
+
+  <!-- reminder: ISO / GMP / additional small text from intro, already covered -->
+  <div style="background: #f0ebe2; border-radius: 2rem; padding: 1.2rem 1.8rem; margin: 1.5rem 0 0.8rem; transition: background 0.2s; border-left: 4px solid #9f8a6b;">
+    <p style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin: 0;">
+      <i class="fas fa-flask" style="color: #557a4e;"></i>
+      <span style="font-weight: 400;">🌱 <b>28-acre herbal garden</b> · largest private tissue culture lab · ISO, HACCP, GMP, Ayurveda dept. approval</span>
+    </p>
+  </div>
+
+  <!-- LINK TO INDEX.HTML (or previous sheet) – exactly as requested -->
+  <div class="back-link-container">
+    <a href="index.html" class="back-link" title="back to main page">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+  </div>
+
+  <!-- subtle note: transition on link included, also all details have smooth entry -->
+  <p style="text-align: right; font-size: 0.9rem; color: #ac9e8a; margin-top: 0.5rem;">
+    <i class="far fa-clock"></i> Edited by company dealer...
+  </p>
+</div>
+
+<!-- small footnote: the 'company.html' page is ready, link to index works (conceptually)  -->
+</body>
+</html>
