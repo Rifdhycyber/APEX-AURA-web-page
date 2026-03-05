@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Natural Ceylon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5fff5 0%, #e8f5e8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Header Section with Logos */
+        .header {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,100,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDown 0.8s ease;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .company-logo, .my-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .company-logo:hover, .my-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .company-logo {
+            cursor: pointer;
+        }
+
+        .my-logo {
+            cursor: pointer;
+        }
+
+/* Current logo size change pannunga */
+.logo-img {
+    width: 60px !important;      /* Smaller */
+    height: 80px !important;     /* Smaller */
+    font-size: 16px !important;  /* Text inside logo */
+}
+
+/* Text size change pannunga */
+.logo-text {
+    font-size: 0.9rem !important;  /* Smaller text */
+}
+
+/* If you're using img tag */
+.company-logo img, .my-logo img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50%;
+}
+
+
+/* Logo Text Styles - Natural Ceylon and Your Store words ku mattum */
+.company-logo .logo-text, .my-logo .logo-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease;
+    position: relative;
+    padding: 5px 0;
+    display: inline-block;
+}
+
+/* Natural Ceylon Text Specific */
+.company-logo .logo-text {
+    color: #2d5a27;
+    background: linear-gradient(135deg, #2d5a27, #4caf50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    transition: all 0.5s ease;
+}
+
+.company-logo:hover .logo-text {
+    background-position: right center;
+    transform: scale(1.1);
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+}
+
+/* Your Store Text Specific */
+.my-logo .logo-text {
+    color: #AECF80;
+    background: linear-gradient(135deg, #AECF80, #2e7d32);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    transition: all 0.5s ease;
+}
+
+.my-logo:hover .logo-text {
+    background-position: right center;
+    transform: scale(1.1);
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Bottom Border Animation for Natural Ceylon */
+.company-logo .logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #4caf50, #2e7d32);
+    transition: width 0.4s ease;
+}
+
+.company-logo:hover .logo-text::after {
+    width: 100%;
+}
+
+/* Bottom Border Animation for Your Store */
+.my-logo .logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #AECF80, #61A345);
+    transition: width 0.4s ease;
+}
+
+.my-logo:hover .logo-text::after {
+    width: 100%;
+}
+
+/* Optional: Floating animation for text */
+@keyframes textFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.company-logo .logo-text, .my-logo .logo-text {
+    animation: textFloat 3s ease-in-out infinite;
+}
+
+/* Remove animation on hover */
+.company-logo:hover .logo-text, 
+.my-logo:hover .logo-text {
+    animation: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .company-logo .logo-text, .my-logo .logo-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .company-logo .logo-text, .my-logo .logo-text {
+        font-size: 0.9rem;
+    }
+}
+
+
+        /* .logo-img {
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .company-logo:hover .logo-img {
+            transform: rotate(360deg);
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.6);
+        }
+
+        .my-logo:hover .logo-img {
+            transform: rotate(-360deg);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d5a27;
+            letter-spacing: 1px;
+        }
+
+        .my-logo .logo-text {
+            color: #b8860b;
+        } */
+
+        /* Main Product Container */
+        .product-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            animation: fadeInUp 1s ease;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .product-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        /* Product Image Section */
+        .product-image-section {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #f9fff9;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .product-image-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            transition: all 0.6s ease;
+            cursor: zoom-in;
+        }
+
+        .product-image:hover {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+            z-index: 2;
+        }
+
+        /* Product Details Section */
+        .product-details-section {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: #4caf50;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            animation: slideInRight 0.8s ease;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            color: #2d5a27;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            animation: slideInRight 0.8s ease 0.1s both;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .product-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #4caf50, #2e7d32);
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+
+        .product-title:hover::after {
+            width: 150px;
+        }
+
+        /* Price Section */
+        .price-section {
+            background: linear-gradient(135deg, #f1f8f1, #e8f5e8);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: slideInRight 0.8s ease 0.2s both;
+            border-left: 5px solid #4caf50;
+            transition: all 0.4s ease;
+        }
+
+        .price-section:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+        }
+
+        .current-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #2d5a27;
+        }
+
+        /* .old-price {
+            font-size: 1.5rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .discount {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+        } */
+
+        /* Ingredients Section */
+        .ingredients-section {
+            margin: 30px 0;
+            animation: slideInRight 0.8s ease 0.3s both;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: #2d5a27;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #4caf50;
+            font-size: 1.5rem;
+        }
+
+        .ingredients-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .ingredient-tag {
+            background: white;
+            padding: 8px 18px;
+            border-radius: 50px;
+            border: 2px solid #4caf50;
+            color: #2d5a27;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: default;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .ingredient-tag:hover {
+            background: #4caf50;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            margin: 30px 0;
+            animation: slideInRight 0.8s ease 0.4s both;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateX(10px);
+            background: linear-gradient(90deg, #f1f8f1, transparent);
+        }
+
+        .benefit-icon {
+            width: 30px;
+            height: 30px;
+            background: #4caf50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+        }
+
+        .benefit-item:hover .benefit-icon {
+            transform: rotate(360deg);
+            background: #2e7d32;
+        }
+
+        .benefit-text {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Buy Now Button */
+        .buy-now-section {
+            margin-top: 40px;
+            animation: slideInRight 0.8s ease 0.5s both;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            text-decoration: none;
+            padding: 18px 45px;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .whatsapp-btn:hover::before {
+            left: 100%;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn:active {
+            transform: translateY(0);
+        }
+
+        .whatsapp-icon {
+            font-size: 1.8rem;
+            animation: pulse 2s infinite;
+        }
+
+        /* Quantity Selector */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            animation: slideInRight 0.8s ease 0.45s both;
+        }
+
+        .quantity-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d5a27;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f5f5f5;
+            border-radius: 50px;
+            padding: 5px;
+        }
+
+        .qty-btn {
+            width: 35px;
+            height: 35px;
+            border: none;
+            background: white;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d5a27;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .qty-btn:hover {
+            background: #4caf50;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .qty-input {
+            width: 60px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            background: transparent;
+            color: #2d5a27;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .product-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-image {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .product-title {
+                font-size: 2rem;
+            }
+
+            .current-price {
+                font-size: 2rem;
+            }
+
+            .whatsapp-btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .product-content {
+                padding: 20px;
+            }
+
+            .product-image {
+                height: 250px;
+            }
+
+            .product-title {
+                font-size: 1.8rem;
+            }
+
+            .price-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .ingredients-list {
+                gap: 5px;
+            }
+
+            .ingredient-tag {
+                padding: 5px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logos -->
+    <header class="header">
+        <div class="company-logo" onclick="window.location.href='index.html'">
+            <div class="logo-img"><img src="./logo-v.png"></div>
+            <div class="logo-text">APEX AURA</div>
+        </div>
+        
+        <div class="my-logo" onclick="window.location.href='about.html'">
+            <div class="logo-img"><img src="../ZR logo.png"></div>
+            <div class="logo-text">ZR HEALTHY FUTURE </div>
+        </div>
+    </header>
+
+    <!-- Main Product Container -->
+    <main class="product-container">
+        <div class="product-content">
+            <!-- Product Image Section -->
+            <div class="product-image-section">
+                <span class="badge">Bestseller</span>
+                <img src="../Products img/CENTELLA-ASIATICA.png" alt="My Turmeric Product" class="product-image">
+            </div>
+
+            <!-- Product Details Section -->
+            <div class="product-details-section">
+                <div class="product-category">Herbal Supplement</div>
+                <h1 class="product-title">My Turmeric Gold</h1>
+                
+                <!-- Price Section -->
+                <div class="price-section">
+                    <span class="current-price">LKR 1,850</span>
+                    <!-- <span class="old-price">LKR 2,500</span> -->
+                    <!-- <span class="discount">26% OFF</span> -->
+                </div>
+
+                <!-- Quantity Selector -->
+                <div class="quantity-selector">
+                    <span class="quantity-label">Quantity:</span>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="decreaseQty()">−</button>
+                        <input type="text" class="qty-input" id="quantity" value="1" readonly>
+                        <button class="qty-btn" onclick="increaseQty()">+</button>
+                    </div>
+                </div>
+
+                <!-- Ingredients Section -->
+                <div class="ingredients-section">
+                    <h3 class="section-title">
+                        <span>🌱</span> Key Ingredients
+                    </h3>
+                    <div class="ingredients-list">
+                        <span class="ingredient-tag">Organic Turmeric</span>
+                        <span class="ingredient-tag">Black Pepper</span>
+                        <span class="ingredient-tag">Ginger Extract</span>
+                        <span class="ingredient-tag">Virgin Coconut Oil</span>
+                        <span class="ingredient-tag">Honey</span>
+                        <span class="ingredient-tag">Vitamin C</span>
+                    </div>
+                </div>
+
+                <!-- Benefits Section -->
+                <div class="benefits-section">
+                    <h3 class="section-title">
+                        <span>✨</span> Key Benefits
+                    </h3>
+                    <ul class="benefits-list">
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span class="benefit-text">Powerful anti-inflammatory properties</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span class="benefit-text">Boosts immune system naturally</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span class="benefit-text">Improves skin health & glow</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span class="benefit-text">Supports joint health & flexibility</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <span class="benefit-text">100% Organic & Chemical Free</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Buy Now Button with WhatsApp -->
+                <div class="buy-now-section">
+                    <a href="https://wa.me/94766736677?text=Hi%21%20I%27m%20interested%20in%20buying%20My%20Turmeric%20Gold%20-%20Quantity%3A%201" 
+                       class="whatsapp-btn" 
+                       target="_blank" 
+                       id="whatsappBtn">
+                        <span class="whatsapp-icon">📱</span>
+                        Buy Now on WhatsApp
+                        <span style="font-size: 1rem; opacity: 0.9;">→</span>
+                    </a>
+                    <p style="text-align: center; margin-top: 15px; color: #666; font-size: 0.9rem;">
+                        📞 +94766736677 • Quick Response Within 5 Min
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Quantity selector functionality
+        function increaseQty() {
+            let qty = document.getElementById('quantity');
+            let currentQty = parseInt(qty.value);
+            qty.value = currentQty + 1;
+            updateWhatsAppLink();
+        }
+
+        function decreaseQty() {
+            let qty = document.getElementById('quantity');
+            let currentQty = parseInt(qty.value);
+            if (currentQty > 1) {
+                qty.value = currentQty - 1;
+                updateWhatsAppLink();
+            }
+        }
+
+        // Update WhatsApp link with quantity and product name
+        function updateWhatsAppLink() {
+            let qty = document.getElementById('quantity').value;
+            let productName = document.querySelector('.product-title').textContent;
+            let whatsappBtn = document.getElementById('whatsappBtn');
+            
+            // Format phone number (remove any spaces or special characters)
+            let phoneNumber = "+94 76 673 6677"; // +94 76 673 6677 without symbols
+            
+            let message = `Hi! I'm interested in buying ${productName} - Quantity: ${qty}`;
+            let encodedMessage = encodeURIComponent(message);
+            
+            whatsappBtn.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        }
+
+        // Add to cart animation (optional)
+        document.querySelector('.whatsapp-btn').addEventListener('click', function(e) {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+        });
+    </script>
+</body>
+</html>
