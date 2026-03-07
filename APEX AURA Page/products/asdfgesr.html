@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Infinite Loop - Auto Play</title>
+    <!-- Google Fonts for Premium Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #e2e8f0;
+            --accent-color: #4ade80; /* Updated to Green */
+            --transition-speed: 0.6s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            /* Updated to Green Gradient */
+            background: linear-gradient(to right, #4ade80, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        /* Main Slider Container */
+        .slider-container {
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden; /* Hide extra items */
+            padding: 20px 0;
+        }
+
+        /* The track that moves */
+        .slider-track {
+            display: flex;
+            /* Transition will be handled by JS for smoother control */
+            cursor: grab;
+        }
+
+        .slider-track:active {
+            cursor: grabbing;
+        }
+
+        /* Individual Card Style */
+        .card {
+            flex-shrink: 0; /* Prevent shrinking */
+            padding: 10px;
+            user-select: none;
+        }
+
+        /* Inner Card Content */
+        .card-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Premium Green Hover Effect */
+        .card:hover .card-content {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(74, 222, 128, 0.3); /* Green glow */
+            border-color: rgba(74, 222, 128, 0.3);
+        }
+
+        .card-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-color); /* Green Text */
+        }
+
+        .card-info p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #94a3b8;
+        }
+
+        /* --- RESPONSIVE LOGIC --- */
+
+        /* DESKTOP VIEW - 3 Images Visible */
+        @media (min-width: 769px) {
+            .card {
+                width: 33.333%; /* 100% / 3 */
+                padding: 15px;
+            }
+        }
+
+        /* MOBILE VIEW - 1 Center + Half Sides Peek */
+        @media (max-width: 768px) {
+            .card {
+                /* Width 85% leaves 15% space, split between left/right */
+                /* This creates the "side la half image" effect */
+                width: 85%; 
+                padding: 10px 5px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Navigation Buttons */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-color); /* Green Hover */
+            border-color: var(--accent-color);
+            color: #0f172a;
+        }
+
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+
+        @media (max-width: 480px) {
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                top: 40%; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Premium Gallery</h2>
+
+    <div class="slider-container" id="sliderContainer">
+        <button class="nav-btn prev-btn">&#10094;</button>
+        <button class="nav-btn next-btn">&#10095;</button>
+        
+        <div class="slider-track" id="track">
+            <!-- Images injected by JS -->
+        </div>
+    </div>
+
+    <script>
+        // Data for images and descriptions
+        const slidesData = [
+            {
+                img: "https://picsum.photos/seed/nature1/800/600",
+                title: "Mountain Serenity",
+                desc: "Experience the calm of the high peaks with this breathtaking view."
+            },
+            {
+                img: "https://picsum.photos/seed/city2/800/600",
+                title: "Urban Lights",
+                desc: "The city comes alive at night with vibrant energy and neon dreams."
+            },
+            {
+                img: "https://picsum.photos/seed/water3/800/600",
+                title: "Ocean Waves",
+                desc: "Feel the rhythm of the ocean and the endless blue horizon."
+            },
+            {
+                img: "https://picsum.photos/seed/forest4/800/600",
+                title: "Forest Path",
+                desc: "Walk into the unknown and discover nature's hidden secrets."
+            },
+            {
+                img: "https://picsum.photos/seed/desert5/800/600",
+                title: "Desert Dunes",
+                desc: "Golden sands stretching far under the scorching midday sun."
+            },
+            {
+                img: "https://picsum.photos/seed/art6/800/600",
+                title: "Abstract Art",
+                desc: "A fusion of colors and shapes that challenge your imagination."
+            }
+        ];
+
+        const track = document.getElementById('track');
+        const container = document.getElementById('sliderContainer');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        let currentIndex = 1; // Start at 1 (Index 0 is the clone of last item)
+        let isTransitioning = false;
+        let autoPlayInterval;
+
+        // 1. Initialize Slides & Clones
+        function initSlider() {
+            track.innerHTML = '';
+            const firstSlide = slidesData[0];
+            const lastSlide = slidesData[slidesData.length - 1];
+
+            const createSlideHTML = (slide) => {
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.innerHTML = `
+                    <div class="card-content">
+                        <img src="${slide.img}" alt="${slide.title}" class="card-image">
+                        <div class="card-info">
+                            <h3>${slide.title}</h3>
+                            <p>${slide.desc}</p>
+                        </div>
+                    </div>
+                `;
+                return div;
+            };
+
+            // Append Clone of Last
+            track.appendChild(createSlideHTML(lastSlide));
+
+            // Append Originals
+            slidesData.forEach(slide => {
+                track.appendChild(createSlideHTML(slide));
+            });
+
+            // Append Clone of First
+            track.appendChild(createSlideHTML(firstSlide));
+
+            updatePosition();
+        }
+
+        // 2. Calculate Position & Move
+        function updatePosition() {
+            const cardWidth = track.children[0].getBoundingClientRect().width;
+            const containerWidth = container.offsetWidth;
+            
+            // Default offset is 0 (Desktop)
+            let offset = 0;
+
+            // MOBILE LOGIC: Calculate offset to center the active card
+            if (window.innerWidth <= 768) {
+                // (Container Width - Card Width) / 2  = Left Space needed
+                offset = (containerWidth - cardWidth) / 2;
+            }
+
+            // Calculate translate value
+            // Formula: -(CurrentIndex * CardWidth) + Offset
+            const translateX = -(currentIndex * cardWidth) + offset;
+            
+            track.style.transition = isTransitioning ? 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)' : 'none';
+            track.style.transform = `translateX(${translateX}px)`;
+        }
+
+        function moveSlider(direction) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            if (direction === 'next') {
+                currentIndex++;
+            } else {
+                currentIndex--;
+            }
+            
+            updatePosition();
+        }
+
+        // 3. Handle Infinite Loop (The Jump)
+        track.addEventListener('transitionend', () => {
+            isTransitioning = false;
+            const totalSlides = slidesData.length;
+
+            // If we reached the clone of the first slide (at the very end)
+            if (currentIndex >= totalSlides + 1) {
+                currentIndex = 1;
+            } 
+            // If we reached the clone of the last slide (at the very start)
+            else if (currentIndex <= 0) {
+                currentIndex = totalSlides;
+            }
+
+            // Instant jump without animation
+            updatePosition();
+        });
+
+        // 4. Event Listeners
+        nextBtn.addEventListener('click', () => moveSlider('next'));
+        prevBtn.addEventListener('click', () => moveSlider('prev'));
+
+        window.addEventListener('resize', () => {
+            // Update position immediately on resize to keep it centered
+            updatePosition();
+        });
+
+        // 5. AUTO PLAY LOGIC (3 Seconds)
+        function startAutoPlay() {
+            // Clear existing to avoid duplicates
+            if(autoPlayInterval) clearInterval(autoPlayInterval);
+            
+            autoPlayInterval = setInterval(() => {
+                if(!isTransitioning) {
+                    moveSlider('next');
+                }
+            }, 3000); // 3000ms = 3 seconds
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        // Pause on Hover
+        container.addEventListener('mouseenter', stopAutoPlay);
+        container.addEventListener('mouseleave', startAutoPlay);
+        // Also pause on touch for mobile
+        container.addEventListener('touchstart', stopAutoPlay, {passive: true});
+        container.addEventListener('touchend', startAutoPlay);
+
+        // Start Everything
+        initSlider();
+        startAutoPlay();
+
+    </script>
+</body>
+</html>

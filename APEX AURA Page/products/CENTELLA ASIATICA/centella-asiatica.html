@@ -769,7 +769,7 @@
         stroke: #c6ffb0;
     }
 
-         :root {
+ :root {
             --bg-color: #0f172a;
             --card-bg: #1e293b;
             --text-color: #e2e8f0;
@@ -777,14 +777,15 @@
             --transition-speed: 0.6s;
         }
 
+        * {
+            
+        }
+
         .slides{
             box-sizing: border-box;
-            border-radius: 5%;
             margin: 0;
             padding: 0;
-        } 
 
-        .slides {
             font-family: 'Lato', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -957,7 +958,7 @@
         </div>
         
         <div class="my-logo" onclick="window.location.href='.././index.html'">
-            <div class="logo-img"><img src="../ZR logo.png"></div>
+            <div class="logo-img"><img src="../../ZR logo.png"></div>
             <div class="logo-text">ZR HEALTHY FUTURE </div>
         </div>
     </header>
@@ -968,7 +969,7 @@
             <!-- Product Image Section -->
             <div class="product-image-section">
                 <span class="badge">Bestseller</span>
-                <img src="../Products img/CENTELLA-ASIATICA.png" alt="My Turmeric Product" class="product-image">
+                <img src="../../Products img/014-Centella-Asiatica.png" alt="My Turmeric Product" class="product-image">
             </div>
 
             <!-- Product Details Section -->
@@ -1061,7 +1062,7 @@
         </div>
 <!-- ADDED GREEN BACK BUTTON (GOES TO MAIN PAGE) -->
     <div class="back-button-container">
-        <button class="back-to-main" onclick="window.location.href='.././index.html'">
+        <button class="back-to-main" onclick="window.location.href='../../index.html'">
             <svg class="back-arrow-icon" viewBox="0 0 24 24" width="28" height="28">
                 <path d="M4 12H20M4 12L10 6M4 12L10 18" stroke="currentColor" stroke-width="2.2" fill="none"/>
             </svg>
@@ -1071,8 +1072,9 @@
         
     </main>
 
-    <div class="slides">
- <h2>FEEDBACKS ABOUT THIS PRODUCT</h2>
+<div class="slides">
+
+    <h2>Premium Gallery</h2>
 
     <div class="slider-container" id="sliderContainer">
         <button class="nav-btn prev-btn">&#10094;</button>
@@ -1082,7 +1084,7 @@
             <!-- Images injected by JS -->
         </div>
     </div>
-</div>
+    </div>
     
 <script>
     function increaseQty() {
@@ -1169,24 +1171,21 @@
 //         updateWhatsAppLink();
 //     };
 
-       
-// <script>
-        // Data for images and descriptions
+ // Data for images and descriptions
         const slidesData = [
             {
-                img: "https://picsum.photos/seed/nature1/800/600",
-                title: "Mountain Serenity",
-                desc: "Experience the calm of the high peaks with this breathtaking view."
+                img: "./1.jpeg",
+                title: "Centella Plant",
+                desc: "Centella asiatica (சென்டெல்லா ஆசியாட்டிகா) என்பது ஆசியா, ஆப்பிரிக்கா மற்றும் ஆஸ்திரேலியாவின் ஈரமான பகுதிகளில் வளரும் ஒரு மருத்துவ மூலிகை ஆகும். இது தமிழில் வல்லாரை (Vallarai) என்று பரவலாக அழைக்கப்படுகிறது. "
             },
             {
-                img: "https://picsum.photos/seed/city2/800/600",
-                title: "Urban Lights",
-                desc: "The city comes alive at night with vibrant energy and neon dreams."
-            },
+                img: "./2.jpeg",
+                title: "Benifits",
+                desc: ".வல்லாரை கீரை, கீல்வாதத்தால் ஏற்படும் மூட்டு வலியைக் குறைப்பது, வயிற்றுப் புண்களைக் குணப்படுத்துவது, மன அழுத்தம், பதட்டத்தைக் குறைப்பது ஆகியவற்றுடன் மூளை செயல்பாடு மற்றும் நரம்பு மண்டல செயல்பாட்டை மேம்படுத்துவது போன்ற பல்வேறு ஆரோக்கிய நன்மைகளை வழங்கும் ஒரு சக்திவாய்ந்த மருத்துவ மூலிகையாகும். "},
             {
-                img: "https://picsum.photos/seed/water3/800/600",
+                img: "./3.jpeg",
                 title: "Ocean Waves",
-                desc: "Feel the rhythm of the ocean and the endless blue horizon."
+                desc: "- வல்லாரை இலைப் பொடியை 100-300 கிராம் வரை பசுவின் பாலில் உண்டு வர மூளையைப் பலப்படுத்தி ஞாபக சக்தியை அதிகப்படுத்தும். <br>- இலையுடன் வெந்தயம் சேர்த்து குடிநீரிட்டு குழந்தைகளுக்கு ஏற்படும் சுரம், வயிற்றுக் கோளாறுகளை நீக்கத் தரலாம்.<br>- இலையை அரைத்து வைத்துக் கட்ட யானைக்கால் வீக்கம், விரை வீக்கம், கட்டிகள் இவை சரியாகும். இந்நோய்களில் ஏற்படும் சுரம் தீர இலையைச் சுரசம் செய்து 4,5 துளி வீதம் கொடுத்து வரலாம்.<br>- இலையுடன் சீரகம், சர்க்கரை கூட்டி அரைத்துக் கொடுக்க குழந்தைகளுக்கு ஏற்படும் சீதக் கழிச்சல், குருதிக் கழிச்சல் தீரும்.<br>- சிறிதளவு இலையுடன் மிளகு, பூண்டு சேர்த்து அரைத்து காலையில் மட்டும் கொடுத்து, மோர் சாதம் சாப்பிட்டு வர தீராத புண்கள் தீரும்.<br>- வல்லாரை இலையைத் துவையலாகச் செய்து, அதிக சுறுசுறுப்புடன் (Hyper acticity) காணப்படும் குழந்தைகளுக்குக் கொடுத்து வந்தால் தீவிரம் குறையும்.<br>- இலைச்சாறுடன் பசும்பால், அதிமதுரத்தூள் சேர்த்துக் கொடுத்து வர குழந்தைகளுக்கு ஏற்படும் நரம்பு நோய்களும், பெரியோர்க்கு ஏற்படும் சுரம், மேக நோய், வயிற்று நோய்கள் தீரும்."
             },
             {
                 img: "https://picsum.photos/seed/forest4/800/600",
@@ -1337,7 +1336,9 @@
         // Start Everything
         initSlider();
         startAutoPlay();
+       
 
-    </script>
+
+</script>
 </body>
 </html>
